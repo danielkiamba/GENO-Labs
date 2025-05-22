@@ -1,115 +1,121 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+import React, { useState } from "react";
+import Head from "next/head";
+import Link from "next/link";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+export default function Genoo() {
+  const [menuOpen, setMenuOpen] = useState(false);
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export default function Home() {
   return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              pages/index.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    <>
+      <Head>
+        <title>GENO Labs</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+      </Head>
+
+      <div className="min-h-screen flex flex-col bg-white text-black">
+        {/* Navbar */}
+        <nav className="bg-gray-100 shadow-md p-4 flex justify-between items-center fixed top-0 w-full z-50">
+          <Link href="/" className="text-2xl font-bold">GENO Labs</Link>
+          <div className="md:hidden">
+            <button onClick={() => setMenuOpen(!menuOpen)} className="focus:outline-none">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+          <div className="hidden md:flex space-x-4">
+            <Link href="/" className="hover:text-blue-600">Home</Link>
+            {/* <a href="/#services" className="hover:text-blue-600">Services</a>
+            <a href="/#gallery" className="hover:text-blue-600">Gallery</a> */}
+            {/* <a href="/#contact" className="hover:text-blue-600">Contact</a> */
+            <Link href="/about" className="hover:text-blue-600">About Us</Link>}
+            <Link href="/team" className="hover:text-blue-600">Our Team</Link>
+            <Link href="/book" className="hover:text-blue-600">Book a Test</Link>
+          </div>
+        </nav>
+
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div className="md:hidden bg-gray-100 shadow-md p-4 space-y-2 fixed top-16 w-full z-40">
+            <Link href="/" className="block hover:text-blue-600">Home</Link>
+            {/* <a href="/#services" className="block hover:text-blue-600">Services</a>
+            <a href="/#gallery" className="block hover:text-blue-600">Gallery</a>
+            <a href="/#contact" className="block hover:text-blue-600">Contact</a> */}
+            <Link href="/about" className="block hover:text-blue-600">About Us</Link>
+            <Link href="/team" className="block hover:text-blue-600">Our Team</Link>
+            <Link href="/book" className="block hover:text-blue-600">Book a Test</Link>
+          </div>
+        )}
+
+        {/* Spacer for fixed navbar */}
+        <div className="h-20" />
+
+        {/* Hero Section */}
+        <header
+  className="relative py-20 text-center text-white"
+  style={{
+    backgroundImage: "url('https://www.shutterstock.com/image-photo/lab-technician-assistant-analyzing-blood-600nw-2523595607.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+  <div className="relative z-10">
+    <h1 className="text-4xl font-bold mb-4">Welcome to GENO Labs</h1>
+    <p className="text-xl">
+      Offering Biochemistry, Hematology, and Cytology Diagnostic Services
+    </p>
+  </div>
+</header>
+
+
+        {/* Services */}
+        <section id="services" className="py-12 px-6">
+          <h2 className="text-3xl font-semibold text-center mb-10">Our Services</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-4 border rounded-xl shadow">
+              <h3 className="text-xl font-bold mb-2">Biochemistry</h3>
+              <p>Comprehensive biochemical tests using cutting-edge technology for accurate diagnosis.</p>
+            </div>
+            <div className="p-4 border rounded-xl shadow">
+              <h3 className="text-xl font-bold mb-2">Hematology</h3>
+              <p>Specialized tests including CBC, ESR, and coagulation profiles for blood disorders.</p>
+            </div>
+            <div className="p-4 border rounded-xl shadow">
+              <h3 className="text-xl font-bold mb-2">Cytology</h3>
+              <p>Expert cytological evaluations including Pap smears and FNAC for cellular abnormalities.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Gallery */}
+        <section id="gallery" className="py-12 px-6 bg-gray-50">
+          <h2 className="text-3xl font-semibold text-center mb-10">Lab Gallery</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <img src="https://www.shutterstock.com/image-photo/lab-technician-assistant-analyzing-blood-600nw-2523595607.jpg" alt="Lab 1" className="rounded-xl shadow object-cover h-48 w-full" />
+            <img src="https://www.cgdev.org/sites/default/files/2022-11/Africa-Lab-Blog-Cover.jpeg" alt="Lab 2" className="rounded-xl shadow object-cover h-48 w-full" />
+            <img src="https://static.vecteezy.com/system/resources/previews/004/790/208/large_2x/medical-laboratory-a-glass-plate-with-blood-in-the-hand-in-a-medical-glove-on-a-blue-background-the-concept-of-laboratory-research-photo.jpg" alt="Lab 3" className="rounded-xl shadow object-cover h-48 w-full" />
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section id="contact" className="py-12 px-6">
+          <h2 className="text-3xl font-semibold text-center mb-10">Contact Us</h2>
+          <form className="max-w-xl mx-auto space-y-4">
+            <input placeholder="Your Name" className="w-full p-2 border rounded" />
+            <input placeholder="Your Email" className="w-full p-2 border rounded" />
+            <textarea placeholder="Your Message" className="w-full p-2 border rounded" />
+            <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Send Message</button>
+          </form>
+        </section>
+
+        {/* Footer */}
+        <footer className="bg-gray-800 text-white text-center py-6 mt-auto">
+          <p>&copy; {new Date().getFullYear()} GENO Labs. All rights reserved.</p>
+        </footer>
+      </div>
+    </>
   );
 }
+
+
