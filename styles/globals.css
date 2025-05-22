@@ -25,14 +25,4 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@keyframes slide {
-  0% { transform: translateX(0%); }
-  50% { transform: translateX(-50%); }
-  100% { transform: translateX(0%); }
-}
-
-.animate-slide {
-  animation: slide 50s ease-in-out infinite;
-}
-
 
