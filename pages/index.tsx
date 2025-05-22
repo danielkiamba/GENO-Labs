@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import { FiThermometer } from "react-icons/fi";  // Biochemistry
+import { FaTint, FaDna } from "react-icons/fa";  // Hematology & Cytology
+import { GiMicroscope } from "react-icons/gi";   // Histology
+
 
 export default function Genoo() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -70,23 +74,69 @@ export default function Genoo() {
 
 
         {/* Services */}
+        {
+        
         <section id="services" className="py-12 px-6">
-          <h2 className="text-3xl font-semibold text-center mb-10">Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-4 border rounded-xl shadow">
-              <h3 className="text-xl font-bold mb-2">Biochemistry</h3>
-              <p>Comprehensive biochemical tests using cutting-edge technology for accurate diagnosis.</p>
-            </div>
-            <div className="p-4 border rounded-xl shadow">
-              <h3 className="text-xl font-bold mb-2">Hematology</h3>
-              <p>Specialized tests including CBC, ESR, and coagulation profiles for blood disorders.</p>
-            </div>
-            <div className="p-4 border rounded-xl shadow">
-              <h3 className="text-xl font-bold mb-2">Cytology</h3>
-              <p>Expert cytological evaluations including Pap smears and FNAC for cellular abnormalities.</p>
-            </div>
-          </div>
-        </section>
+  <h2 className="text-3xl font-semibold text-center mb-10">Our Services</h2>
+
+  {/* Mobile View: Stack All */}
+  <div className="md:hidden grid grid-cols-1 gap-6">
+    <div className="p-4 border rounded-xl shadow bg-blue-50">
+    <FiThermometer className="text-3xl text-blue-500 mb-2" />
+      <h3 className="text-xl font-bold mb-2">Biochemistry</h3>
+      <p>Comprehensive biochemical tests using cutting-edge technology for accurate diagnosis.</p>
+    </div>
+    <div className="p-4 border rounded-xl shadow bg-red-50">
+    <FaTint className="text-3xl text-red-500 mb-2" />
+      <h3 className="text-xl font-bold mb-2">Hematology</h3>
+      <p>Specialized tests including CBC, ESR, and coagulation profiles for blood disorders.</p>
+    </div>
+    <div className="p-4 border rounded-xl shadow bg-purple-50">
+    <GiMicroscope className="text-3xl text-purple-500 mb-2" />
+      <h3 className="text-xl font-bold mb-2">Histology</h3>
+      <p>Microscopic examination of tissues to support diagnosis of diseases, especially cancer.</p>
+    </div>
+    <div className="p-4 border rounded-xl shadow bg-green-50">
+    <FaDna className="text-3xl text-green-500 mb-2" />
+      <h3 className="text-xl font-bold mb-2">Cytology</h3>
+      <p>Expert cytological evaluations including Pap smears and FNAC for cellular abnormalities.</p>
+    </div>
+  </div>
+
+  {/* Desktop View: Biochemistry & Histology fixed, Hematology/Cytology slide */}
+  <div className="hidden md:grid md:grid-cols-4 gap-6 items-start">
+    <div className="p-4 border rounded-xl shadow col-span-1 min-h-[200px] bg-blue-50">
+    <FiThermometer className="text-3xl text-blue-500 mb-2" />
+      <h3 className="text-xl font-bold mb-2 ">Biochemistry</h3>
+      <p>Comprehensive biochemical tests using cutting-edge technology for accurate diagnosis.</p>
+    </div>
+
+    <div className="p-4 border rounded-xl shadow col-span-1 min-h-[200px] bg-purple-50">
+    <GiMicroscope className="text-3xl text-purple-500 mb-2" />
+      <h3 className="text-xl font-bold mb-2">Histology</h3>
+      <p>Microscopic examination of tissues to support diagnosis of diseases, especially cancer.</p>
+    </div>
+
+    {/* Slider for Hematology/Cytology */}
+    <div className="col-span-2 relative overflow-hidden h-full ">
+      <div className="flex w-[200%] animate-slide md:space-x-6">
+        <div className="w-1/2 p-4 border rounded-xl shadow bg-white shrink-0 min-h-[200px] bg-red-50">
+        <FaTint className="text-3xl text-red-500 mb-2" />
+          <h3 className="text-xl font-bold mb-2">Hematology</h3>
+          <p>Specialized tests including CBC, ESR, and coagulation profiles for blood disorders.</p>
+        </div>
+        <div className="w-1/2 p-4 border rounded-xl shadow bg-white shrink-0 min-h-[200px] bg-green-50">
+        <FaDna className="text-3xl text-green-500 mb-2" />
+          <h3 className="text-xl font-bold mb-2">Cytology</h3>
+          <p>Expert cytological evaluations including Pap smears and FNAC for cellular abnormalities.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+        
+        }
 
         {/* Gallery */}
         <section id="gallery" className="py-12 px-6 bg-gray-50">
